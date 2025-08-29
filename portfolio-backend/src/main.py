@@ -1,3 +1,5 @@
+from flask import Flask
+from routes.contact import contact_bp
 import os
 import sys
 
@@ -14,6 +16,7 @@ from routes.contact import contact_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
+
 
 # Habilitar CORS para todas as rotas
 CORS(app)
@@ -37,7 +40,8 @@ mail = Mail(app)
 
 # Registro dos blueprints
 app.register_blueprint(user_bp, url_prefix='/api')
-app.register_blueprint(contact_bp, url_prefix='/api')
+app.register_blueprint(contact_bp)
+
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
