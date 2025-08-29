@@ -5,7 +5,7 @@ from flask_mail import Message
 
 contact_bp = Blueprint('contact', __name__)
 
-@contact_bp.route('/contact', methods=['POST'])
+@contact_bp.route('https://back-end-portifolio.onrender.com/contact', methods=['POST'])
 @cross_origin()
 def submit_contact():
     from main import mail  # Importa aqui, dentro da função, para evitar import circular
@@ -45,7 +45,7 @@ def submit_contact():
         print("Erro submit_contact:", e)
         return jsonify({'error': 'Erro interno do servidor'}), 500
 
-@contact_bp.route('/contact', methods=['GET'])
+@contact_bp.route('https://back-end-portifolio.onrender.com/contact', methods=['GET'])
 @cross_origin()
 def get_contacts():
     try:
